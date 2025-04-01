@@ -6,8 +6,8 @@ import dev.api.domain.enums.RoleType;
 
 public class UserBuilder {
 
-    public static User requestToDomain(CreateUserRequest request, String saltKey, String cryptPassword) {
-        var roleType = RoleType.valueOf(request.role());
-        return User.create(request.name(), request.email(), request.nickname(), cryptPassword, saltKey, roleType);
-    }
+	public static User requestToDomain(CreateUserRequest request, String saltKey, String cryptPassword) {
+		var roleType = RoleType.valueOf(request.role());
+		return User.create(request.name(), request.email(), request.nickname(), cryptPassword, saltKey, roleType);
+	}
 }

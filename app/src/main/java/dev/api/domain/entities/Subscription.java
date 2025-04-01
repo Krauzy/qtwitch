@@ -17,39 +17,39 @@ import java.util.UUID;
 @Table(name = "subscription")
 public class Subscription extends PanacheEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private UUID id;
 
-    @Column(name = "value", nullable = false, precision = 2)
-    private BigDecimal value;
+	@Column(name = "value", nullable = false, precision = 2)
+	private BigDecimal value;
 
-    @Column(name = "total_amount", nullable = false, precision = 2)
-    private BigDecimal totalAmount;
+	@Column(name = "total_amount", nullable = false, precision = 2)
+	private BigDecimal totalAmount;
 
-    @Column(name = "begin_date", nullable = false)
-    private LocalDateTime beginDate;
+	@Column(name = "begin_date", nullable = false)
+	private LocalDateTime beginDate;
 
-    @Column(name = "end_date")
-    private LocalDateTime endDate;
+	@Column(name = "end_date")
+	private LocalDateTime endDate;
 
-    @Column(name = "last_invoice")
-    private LocalDateTime lastInvoice;
+	@Column(name = "last_invoice")
+	private LocalDateTime lastInvoice;
 
-    @Column(name = "active", nullable = false)
-    private Boolean active;
+	@Column(name = "active", nullable = false)
+	private Boolean active;
 
-    public SubscriptionResponse toResponse() {
-        return new SubscriptionResponse(id, value, totalAmount, beginDate, endDate, lastInvoice, active);
-    }
+	public SubscriptionResponse toResponse() {
+		return new SubscriptionResponse(id, value, totalAmount, beginDate, endDate, lastInvoice, active);
+	}
 
-    public static Subscription create(BigDecimal value) {
-        var newSubscription = new Subscription();
-        newSubscription.value = value;
-        newSubscription.totalAmount = value;
-        newSubscription.beginDate = LocalDateTime.now();
-        newSubscription.active = true;
+	public static Subscription create(BigDecimal value) {
+		var newSubscription = new Subscription();
+		newSubscription.value = value;
+		newSubscription.totalAmount = value;
+		newSubscription.beginDate = LocalDateTime.now();
+		newSubscription.active = true;
 
-        return newSubscription;
-    }
+		return newSubscription;
+	}
 }

@@ -16,24 +16,24 @@ import java.util.UUID;
 @Table(name = "watch_history")
 public class WatchHistory {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private UUID id;
 
-    @Column(name = "current_timestamp", nullable = false)
-    private Long currentTimestamp;
+	@Column(name = "current_timestamp", nullable = false)
+	private Long currentTimestamp;
 
-    @Column(name = "last_watch", nullable = false)
-    private LocalDateTime lastWatch;
+	@Column(name = "last_watch", nullable = false)
+	private LocalDateTime lastWatch;
 
-    @Column(name = "is_complete", nullable = false)
-    private Boolean isComplete;
+	@Column(name = "is_complete", nullable = false)
+	private Boolean isComplete;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", table = "users")
-    private User user;
+	@ManyToOne
+	@JoinColumn(name = "user_id", table = "users")
+	private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "video_id", table = "video")
-    private Video video;
+	@ManyToOne
+	@JoinColumn(name = "video_id", table = "video")
+	private Video video;
 }

@@ -16,18 +16,18 @@ import java.util.UUID;
 @Table(name = "follow")
 public class Follow {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_following_id", table = "users")
-    private User userFollowing;
+	@ManyToOne
+	@JoinColumn(name = "user_following_id", table = "users")
+	private User userFollowing;
 
-    @ManyToOne
-    @JoinColumn(name = "user_followed_id", table = "users")
-    private User userFollowed;
+	@ManyToOne
+	@JoinColumn(name = "user_followed_id", table = "users")
+	private User userFollowed;
 
-    @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt;
+	@Column(name = "created_at", updatable = false)
+	private LocalDateTime createdAt;
 }

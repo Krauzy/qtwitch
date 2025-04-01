@@ -16,11 +16,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RequiredEnum {
 
-    Class<? extends Enum<?>> enumClass();
+	Class<? extends Enum<?>> enumClass();
 
-    String message() default "Invalid enumerated values.";
+	String message() default "Invalid enumerated values.";
 
-    Class<?>[] groups() default {};
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default {};
 }

@@ -16,24 +16,24 @@ import java.util.UUID;
 @Table(name = "rating")
 public class Rating {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private UUID id;
 
-    @Column(name = "like", nullable = false)
-    private Boolean like;
+	@Column(name = "like", nullable = false)
+	private Boolean like;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", table = "users")
-    private User user;
+	@ManyToOne
+	@JoinColumn(name = "user_id", table = "users")
+	private User user;
 
-    @ManyToOne
-    @JoinColumn(name = "video_id", table = "video")
-    private Video video;
+	@ManyToOne
+	@JoinColumn(name = "video_id", table = "video")
+	private Video video;
 }

@@ -15,24 +15,24 @@ import java.time.LocalDateTime;
 @Table(name = "comment")
 public class Comment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private String id;
 
-    @Column(name = "content", nullable = false, length = 500)
-    private String content;
+	@Column(name = "content", nullable = false, length = 500)
+	private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "author")
-    private User author;
+	@ManyToOne
+	@JoinColumn(name = "author")
+	private User author;
 
-    @ManyToOne
-    @JoinColumn(name = "video_id")
-    private Video video;
+	@ManyToOne
+	@JoinColumn(name = "video_id")
+	private Video video;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false, updatable = false)
-    private LocalDateTime updatedAt;
+	@Column(name = "updated_at", nullable = false, updatable = false)
+	private LocalDateTime updatedAt;
 }

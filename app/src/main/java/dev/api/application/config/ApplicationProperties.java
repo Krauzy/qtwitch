@@ -7,7 +7,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 @ApplicationScoped
 public class ApplicationProperties {
 
-    @Inject
-    @ConfigProperty(name = "security.crypt.cipher.key")
-    public String cipherKey;
+	@Inject
+	@ConfigProperty(name = "security.crypt.cipher.key")
+	public String cipherKey;
 }

@@ -11,17 +11,18 @@ import jakarta.ws.rs.ext.Provider;
 @Provider
 public class RestExceptionHandler implements ExceptionMapper<RestException> {
 
-    @Inject
-    private MessageConfig messageConfig;
+	@Inject
+	private MessageConfig messageConfig;
 
-    @Override
-    public Response toResponse(RestException e) {
-        var errorResponse = new ErrorResponse(e.getStatus(), e.getMessage());
+	@Override
+	public Response toResponse(RestException e) {
+		var errorResponse = new ErrorResponse(e.getStatus(), e.getMessage());
 
-        return Response.status(e.getStatus()).entity(errorResponse).build();
-    }
+		return Response.status(e.getStatus()).entity(errorResponse).build();
+	}
 
-    private String localMessage(String key) {
-        return messageConfig.getMessage(key);
-    }
+	// TODO usar flat messager
+	private String localMessage(String key) {
+		return messageConfig.getMessage(key);
+	}
 }

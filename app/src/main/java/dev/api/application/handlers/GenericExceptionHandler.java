@@ -8,10 +8,10 @@ import jakarta.ws.rs.ext.Provider;
 @Provider
 public class GenericExceptionHandler implements ExceptionMapper<Exception> {
 
-    @Override
-    public Response toResponse(Exception e) {
-        var errorResponse = new ErrorResponse(Response.Status.INTERNAL_SERVER_ERROR, e.getMessage());
+	@Override
+	public Response toResponse(Exception e) {
+		var errorResponse = new ErrorResponse(Response.Status.INTERNAL_SERVER_ERROR, e.getMessage());
 
-        return Response.status(errorResponse.statusCode()).entity(errorResponse).build();
-    }
+		return Response.status(errorResponse.statusCode()).entity(errorResponse).build();
+	}
 }

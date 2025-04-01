@@ -16,36 +16,36 @@ import java.util.UUID;
 @Table(name = "video")
 public class Video {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
+	private UUID id;
 
-    @Column(name = "title", nullable = false, length = 64)
-    private String title;
+	@Column(name = "title", nullable = false, length = 64)
+	private String title;
 
-    @Column(name = "description", nullable = false, length = 500)
-    private String description;
+	@Column(name = "description", nullable = false, length = 500)
+	private String description;
 
-    @Column(name = "url", nullable = false, updatable = false)
-    private String url;
+	@Column(name = "url", nullable = false, updatable = false)
+	private String url;
 
-    @Column(name = "views", nullable = false)
-    private Long views;
+	@Column(name = "views", nullable = false)
+	private Long views;
 
-    @Column(name = "timestamp", nullable = false)
-    private Long timestamp;
+	@Column(name = "timestamp", nullable = false)
+	private Long timestamp;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+	@Column(name = "created_at", nullable = false, updatable = false)
+	private LocalDateTime createdAt;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
 
-    @ManyToOne
-    @JoinColumn(name = "creator_id", table = "creator")
-    private Creator creator;
+	@ManyToOne
+	@JoinColumn(name = "creator_id", table = "creator")
+	private ContentCreator contentCreator;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", table = "category")
-    private Category category;
+	@ManyToOne
+	@JoinColumn(name = "category_id", table = "category")
+	private Category category;
 }

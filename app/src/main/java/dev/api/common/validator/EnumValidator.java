@@ -10,26 +10,26 @@ import java.util.Objects;
 
 public class EnumValidator implements ConstraintValidator<RequiredEnum, String> {
 
-    private List<String> values;
-    private String messageKey;
+	private List<String> values;
+	private String messageKey;
 
-    @Override
-    public void initialize(RequiredEnum annotation) {
-        this.values = Arrays
-                .stream(annotation.enumClass().getEnumConstants())
-                .map(Enum::name).toList();
+	@Override
+	public void initialize(RequiredEnum annotation) {
+		this.values = Arrays
+			.stream(annotation.enumClass().getEnumConstants())
+			.map(Enum::name).toList();
 
-        this.messageKey = annotation.message();
-    }
+		this.messageKey = annotation.message();
+	}
 
-    @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        if (Objects.isNull(value) || values.contains(value)) return true;
+	@Override
+	public boolean isValid(String value, ConstraintValidatorContext context) {
+		if (Objects.isNull(value) || values.contains(value)) return true;
 
-        context.disableDefaultConstraintViolation();
-        context.buildConstraintViolationWithTemplate(messageKey)
-                .addConstraintViolation();
+		context.disableDefaultConstraintViolation();
+		context.buildConstraintViolationWithTemplate(messageKey)
+			.addConstraintViolation();
 
-        return false;
-    }
+		return false;
+	}
 }
