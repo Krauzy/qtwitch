@@ -1,0 +1,84 @@
+<header class="topbar">
+  <a class="brand" href="/" aria-label="qTwitch home">
+    <img src="/favicon.svg" alt="" width="32" height="32">
+    <strong>qTwitch</strong>
+  </a>
+
+  <nav class="nav-links" aria-label="Principal">
+    <a href="/">Inicio</a>
+    <a href="/">Categorias</a>
+    <a href="/">Ao vivo</a>
+  </nav>
+
+  <button class="go-live" type="button">Transmitir</button>
+</header>
+
+<main class="page-shell">
+  @if (loading) {
+    <section class="state-panel" aria-live="polite">
+      <h1>Carregando transmissoes...</h1>
+    </section>
+  } @else if (errorMessage) {
+    <section class="state-panel error" aria-live="assertive">
+      <h1>{{ errorMessage }}</h1>
+      <p>Confirme se o backend esta rodando em http://localhost:8080.</p>
+    </section>
+  } @else {
+    @if (featuredStream; as featured) {
+      <section class="featured">
+        <div class="featured-preview" [style.background]="featured.thumbnailColor">
+          <span class="live-pill">AO VIVO</span>
+          <div class="preview-bars" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="featured-copy">
+          <span class="eyebrow">Destaque agora</span>
+          <h1>{{ featured.title }}</h1>
+          <p>{{ featured.channelName }} esta transmitindo em {{ featured.category }} para {{ formatViewers(featured.viewerCount) }} pessoas.</p>
+          <button class="watch-button" type="button">Assistir agora</button>
+        </div>
+      </section>
+    }
+
+    <section class="content-grid">
+      <aside class="side-panel" aria-label="Categorias">
+        <h2>Categorias</h2>
+        <div class="category-list">
+          @for (category of categories; track category) {
+            <button type="button">{{ category }}</button>
+          }
+        </div>
+      </aside>
+
+      <section class="streams-section" aria-label="Transmissoes ao vivo">
+        <div class="section-heading">
+          <h2>Ao vivo agora</h2>
+          <span>{{ streams.length }} canais</span>
+        </div>
+
+        <div class="stream-grid">
+          @for (stream of streams; track stream.id) {
+            <article class="stream-card">
+              <div class="stream-thumb" [style.background]="stream.thumbnailColor">
+                <span>LIVE</span>
+              </div>
+              <div class="stream-info">
+                <h3>{{ stream.title }}</h3>
+                <p>{{ stream.channelName }}</p>
+                <div class="stream-meta">
+                  <span>{{ stream.category }}</span>
+                  <strong>{{ formatViewers(stream.viewerCount) }}</strong>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    </section>
+  }
+</main>
